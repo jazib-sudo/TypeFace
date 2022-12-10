@@ -3,6 +3,7 @@ Type face solutions
 
 
 question 1(q1.py), depends on "cv2" library
+input_file_path.txt: file containing list of names
 
 inp.png = input image
 contours_cv.jpg = output image with bounding box
