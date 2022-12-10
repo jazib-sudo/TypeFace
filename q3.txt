@@ -1,0 +1,31 @@
+step1:
+The most efficient way will be to create a data storage table, using Postman or ApacheJmeter like this:
+
+user_id req_in reply_out 		 	resp 	 sum_resp_time 	 no_of_reqs 
+0   	5			10    			5        5            		1
+1 		5,20,25		10,23,33    	5,3,8    16            		3
+2
+.
+.
+.
+1000
+
+where,
+user_id: A unique id for each user
+req_in: Timestamp a request came in for the user
+reply_out: At which time stamp response was provided
+resp: Burst time(reply_out-req_in);i.e; difference in request timestamps and reply time stamp
+sum_resp_time: cumulative response time(a running sum of resp)
+no_of_reqs: A running record of requests.
+
+
+And two variables:
+total_sum_resp_time = whenever a response is provided, save it's duration(cumulative resp).
+total_no_resp_time = cumulative A running record of requests
+
+
+APIs
+API1: total_sum_resp_time/total_no_resp_time
+ApI2(user_id): this api asks for userid: generates sum_resp_time/no_of_reqs for given user id.
+
+eg: API2(1) will give 16/3=5.33
